@@ -1,5 +1,3 @@
-# Descion Tree
-
 # Decision Tree Learning Pipeline from Scratch (NumPy)
 
 A complete decision tree pipeline written with nothing but NumPy: no scikit-learn. It grows a CART tree, prunes it with cost-complexity pruning, compares it with a random forest, and explains what it learned. Every step is plain, readable code.
