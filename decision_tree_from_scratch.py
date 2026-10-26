@@ -11,10 +11,6 @@ from __future__ import annotations
 import argparse
 import json
 import time
-
-
-
-
 import numpy as np
 
 
@@ -34,7 +30,6 @@ def entropy(p: np.ndarray) -> np.ndarray:
 
 
 IMPURITY = {"gini": gini, "entropy": entropy}
-
 
 # ---------------------------------------------------------------------------
 # Split search
@@ -75,7 +70,6 @@ def best_split(X, y, n_classes, impurity, min_samples_leaf, features):
             best, best_gain = (int(f), float(threshold), float(gains[i])), gains[i]
     return best
 
-
 # ---------------------------------------------------------------------------
 # Decision tree
 # ---------------------------------------------------------------------------
@@ -100,7 +94,6 @@ class DecisionTree:
         self.min_impurity_decrease = min_impurity_decrease
         self.max_features = max_features
         self.rng = rng or np.random.default_rng()
-
     # -- training -----------------------------------------------------------
 
     def fit(self, X: np.ndarray, y: np.ndarray, n_classes: int | None = None) -> "DecisionTree":
@@ -152,7 +145,6 @@ class DecisionTree:
         self.impurity = np.array(imp)
         self.n_samples = np.array(n_samples)
         return self
-
     # -- inference ----------------------------------------------------------
 
     def apply(self, X: np.ndarray) -> np.ndarray:
@@ -172,7 +164,6 @@ class DecisionTree:
 
     def predict(self, X):
         return self.predict_proba(X).argmax(axis=1)
-
     # -- structure ----------------------------------------------------------
 
     def _reachable(self) -> np.ndarray:
@@ -252,7 +243,6 @@ class DecisionTree:
                 break
             tree._collapse(nodes)
         return tree
-
     # -- export -------------------------------------------------------------
 
     def export_text(self, feature_names=None, class_names=None, max_depth: int = 3) -> str:
